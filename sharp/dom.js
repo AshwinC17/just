@@ -16,7 +16,15 @@
 //headerTitle.innerHTML = '<h1> hello </h1>'
 // header.style.borderBottom = 'solid 10px #002'
 
-// Get elements by class name
-
+// Get elements by class name 
 let items = document.getElementsByClassName('list-group-item');
-console.log(items);
+//console.log(items);
+//console.log(items[1]);
+items[1].textContent = 'hello 2';
+//items[1].style.fontWeight = 'bold';
+//items[1].style.backgroundColor = 'yellow';
+items[2].style.backgroundColor = 'green';
+
+for(let i=0; i<items.length; i++) {
+    items[i].style.fontWeight = 'bold'
+}
