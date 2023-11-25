@@ -120,36 +120,38 @@
 // il.previousElementSibling.style.backgroundColor = 'yellow';
 
 // create Element
-let newDiv = document.createElement('div');
+//let newDiv = document.createElement('div');
 
 // add class
-newDiv.className = 'hello';
+//newDiv.className = 'hello';
 
 // add id
-newDiv.id = 'h1';
+//newDiv.id = 'h1';
 
 // set attribute
-newDiv.setAttribute('title', 'hello div');
+//newDiv.setAttribute('title', 'hello div');
 
 // create text node
-let newDivTxt = document.createTextNode('Hello World');
+//let newDivTxt = document.createTextNode('Hello World');
 
 // add text to div/ append child
-newDiv.appendChild(newDivTxt);
+//newDiv.appendChild(newDivTxt);
 
 // Insert before "Item Lister"
-let container1 = document.querySelector('header .container');
-let h1 = document.querySelector('header h1');
-container1.insertBefore(newDiv, h1);
-newDiv.style.fontSize = '20px';
+// let container1 = document.querySelector('header .container');
+// let h1 = document.querySelector('header h1');
+// container1.insertBefore(newDiv, h1);
+// newDiv.style.fontSize = '20px';
 
 // Update id and title for the next use
-newDiv.id = 'h2';
-newDiv.setAttribute('title', 'hello2 div');
+// newDiv.id = 'h2';
+// newDiv.setAttribute('title', 'hello2 div');
 
 // Insert before "Item 1"
-let container2 = document.querySelector('#items');
-let item1 = document.querySelector('#items li:first-child');
-container2.insertBefore(newDiv.cloneNode(true), item1);
+// let container2 = document.querySelector('#items');
+// let item1 = document.querySelector('#items li:first-child');
+// container2.insertBefore(newDiv.cloneNode(true), item1);
 
-newDiv.style.fontSize = '50px';
+// newDiv.style.fontSize = '50px';
+
+
