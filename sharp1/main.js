@@ -3,14 +3,17 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
   
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
+    let phone = document.getElementById('phone').value;
   
     let userDetails = {
       name: name,
-      email: email
+      email: email,
+      phone: phone
     };
-
-    //already used
-    localStorage.setItem('userDetails', JSON.stringify(userDetails));
+  
+    let existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+    existingUsers.push(userDetails);
+    localStorage.setItem('users', JSON.stringify(existingUsers));
   
     alert('User details saved to local storage!');
   });
