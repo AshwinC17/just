@@ -8,7 +8,8 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
       name: name,
       email: email
     };
-  
+
+    //already used
     localStorage.setItem('userDetails', JSON.stringify(userDetails));
   
     alert('User details saved to local storage!');
