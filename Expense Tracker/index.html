@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h2 class="text-center mb-4">Expense Tracker</h2>
+
+  <!-- Expense Input Form -->
+  <form id="expenseForm" class="mb-4">
+    <div class="form-row">
+      <div class="col">
+        <label for="expenseAmount">Expense Amount</label>
+        <input type="number" class="form-control" id="expenseAmount" required>
+      </div>
+      <div class="col">
+        <label for="expenseDescription">Description</label>
+        <input type="text" class="form-control" id="expenseDescription" required>
+      </div>
+      <div class="col">
+        <label for="expenseCategory">Category</label>
+        <select class="form-control" id="expenseCategory" required>
+          <option value="" disabled selected>Select Category</option>
+          <option value="fuel">Fuel</option>
+          <option value="market">Market</option>
+          <option value="food">Food</option>
+          <option value="movies">Movies</option>
+          <option value="trip">Trip</option>
+          <option value="Education">Education</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Add Expense</button>
+  </form>
+
+  <!-- Expense Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Expense Amount</th>
+        <th scope="col">Description</th>
+        <th scope="col">Category</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="expenseList">
+    </tbody>
+  </table>
+
+  <button id="clearAll" class="btn btn-danger mt-3">Clear All Expenses</button>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
