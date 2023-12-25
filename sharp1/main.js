@@ -1,3 +1,4 @@
+// Load existing user details when the page loads
 document.addEventListener('DOMContentLoaded', function() {
   // Make a GET request to crudcrud.com using Axios to retrieve saved user details
   axios.get('https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new')
@@ -29,7 +30,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
       phone: phone
   };
 
-  // Make a POST request to crudcrud.com using Axios to save user details
+  // POST request to crudcrud.com using Axios
   axios.post('https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new', userDetails)
       .then(function(response) {
           // Handle the success response here if needed
@@ -38,7 +39,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
           // Call the displayUserDetails function with the response data
           displayUserDetails(response.data);
 
-          //clear the form after successful submission
+          // clear the form after successful submission
           clearForm();
       })
       .catch(function(error) {
@@ -72,11 +73,52 @@ function displayUserDetails(userDetails) {
 }
 
 function editUserDetails(userDetailsToEdit) {
-  axios.put('https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new/' + userDetailsToEdit._id, updatedUserDetails)
+  let updatedName = prompt('Enter updated name:', userDetailsToEdit.name);
+  let updatedEmail = prompt('Enter updated email:', userDetailsToEdit.email);
+  let updatedPhone = prompt('Enter updated phone:', userDetailsToEdit.phone);
+
+  let updatedUserDetails = {
+      _id: userDetailsToEdit._id,
+      name: updatedName,
+      email: updatedEmail,
+      phone: updatedPhone
+  };
+
+  // Update the user details in the cloud using the PUT method
+  axios.put(`https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new/${userDetailsToEdit._id}`, updatedUserDetails)
+      .then(function(response) {
+          // Handle the success response here if needed
+          console.log('User details updated in cloud:', response.data);
+
+          // Update the displayed details on the website
+          userDetailsToEdit.name = response.data.name;
+          userDetailsToEdit.email = response.data.email;
+          userDetailsToEdit.phone = response.data.phone;
+
+          // Remove the existing details and display the updated ones
+          removeUserDetails(userDetailsToEdit);
+          displayUserDetails(userDetailsToEdit);
+      })
+      .catch(function(error) {
+          // Handle errors here
+          console.error('Error updating user details:', error);
+          alert('Error updating user details. Please check the console for more information.');
+      });
 }
 
+
+
+
 function removeUserDetails(userDetailsToRemove) {
-  axios.delete('https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new/' + userDetailsToRemove._id)
+  axios.delete(`https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new/${userDetailsToRemove._id}`)
+      .then(function(response) {
+          // Handle the success response here if needed
+          console.log('User details deleted from cloud:', response.data);
+      })
+      .catch(function(error) {
+          // Handle errors here
+          console.error('Error deleting user details:', error);
+      });
 }
 
 function clearForm() {
