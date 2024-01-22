@@ -1,15 +1,18 @@
-const apiUrl = 'https://crudcrud.com/api/965ba61dfa984d6aa172bd1c8ce46a37/new';
+console.log(apiUrl);
+
+const apiUrl = 'https://crudcrud.com/api/fc4505fb1438410694f35c62384f660d/new';
+
 let products = getStoredProducts() || [];
 localStorage.removeItem('products');
 
-function getStoredProducts() {
-    const storedProducts = localStorage.getItem('products');
-    return storedProducts ? JSON.parse(storedProducts) : null;
-}
-
-function storeProducts() {
-    localStorage.setItem('products', JSON.stringify(products));
-}
+// function getStoredProducts() {
+//     const storedProducts = localStorage.getItem('products');
+//     return storedProducts ? JSON.parse(storedProducts) : null;
+// }
+S
+// function storeProducts() {
+//     localStorage.setItem('products', JSON.stringify(products));
+// }
 
 async function fetchProductsFromAPI() {
     try {
