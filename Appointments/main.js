@@ -31,7 +31,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
   };
 
   // POST request to crudcrud.com using Axios
-  axios.post('https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new', userDetails)
+  axios.post('https://crudcrud.com/api/27fc12661ecb4341ac504cf8e6e2609b/new', userDetails)
       .then(function(response) {
           // Handle the success response here if needed
           console.log('User details saved to cloud:', response.data);
@@ -85,7 +85,7 @@ function editUserDetails(userDetailsToEdit) {
   };
 
   // Update the user details in the cloud using the PUT method
-  axios.put(`https://crudcrud.com/api/f2ef75475adb446c87a2b76ea66f11e4/new/${userDetailsToEdit._id}`, updatedUserDetails)
+  axios.put(`https://crudcrud.com/api/27fc12661ecb4341ac504cf8e6e2609b/new/${userDetailsToEdit._id}`, updatedUserDetails)
       .then(function(response) {
           // Handle the success response here if needed
           console.log('User details updated in cloud:', response.data);
