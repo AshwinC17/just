@@ -84,5 +84,4 @@ function groupBy(array, key) {
     }, {});
 }
 
-// Initial display when the page loads
 fetchProductsFromAPI();
