@@ -1,29 +1,18 @@
+const apiUrl = 'https://crudcrud.com/api/c16f8602d0164a98abd62a2caa4c62e8/new';
 console.log(apiUrl);
 
-const apiUrl = 'https://crudcrud.com/api/fc4505fb1438410694f35c62384f660d/new';
-
-let products = getStoredProducts() || [];
-localStorage.removeItem('products');
-
-// function getStoredProducts() {
-//     const storedProducts = localStorage.getItem('products');
-//     return storedProducts ? JSON.parse(storedProducts) : null;
-// }
-S
-// function storeProducts() {
-//     localStorage.setItem('products', JSON.stringify(products));
-// }
+let products = [];
 
 async function fetchProductsFromAPI() {
     try {
         const response = await axios.get(apiUrl);
-        products = response.data;  // Update local products array
-        storeProducts();
+        products = response.data;
         displayProducts();
     } catch (error) {
         console.error('Error fetching products:', error);
     }
 }
+
 async function addProduct() {
     const productName = document.getElementById('productName').value;
     const sellingPrice = document.getElementById('sellingPrice').value;
@@ -39,7 +28,6 @@ async function addProduct() {
         const response = await axios.post(apiUrl, product);
         product._id = response.data._id;
         products.push(product);
-        storeProducts();
         displayProducts();
     } catch (error) {
         console.error('Error:', error);
@@ -56,14 +44,11 @@ async function deleteProduct(product) {
     try {
         await axios.delete(`${apiUrl}/${productId}`);
         products = products.filter(p => p._id !== productId);
-        storeProducts();
         displayProducts();
     } catch (error) {
         console.error('Error:', error);
     }
 }
-
-
 
 function displayProducts() {
     const outputDiv = document.getElementById('output');
@@ -92,9 +77,6 @@ function displayProducts() {
     }
 }
 
-
-
-
 function groupBy(array, key) {
     return array.reduce((result, obj) => {
         (result[obj[key]] = result[obj[key]] || []).push(obj);
@@ -103,5 +85,4 @@ function groupBy(array, key) {
 }
 
 // Initial display when the page loads
-displayProducts();
 fetchProductsFromAPI();
