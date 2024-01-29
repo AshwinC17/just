@@ -5,8 +5,16 @@
 //console.log(add(1,2));
 //console.log(addOne(1));
 
-const product = (a,b) => {
-    return a * b;
-}
+// const product = (a,b) => {
+//     return a * b;
+// }
 
-console.log(product(2,3));
+// console.log(product(2,3));
+
+const student = {
+    name: 'Andrew',
+    age: 16,
+    class: 12,
+};
+
+console.log(student.class);
