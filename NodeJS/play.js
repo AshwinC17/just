@@ -21,3 +21,12 @@
 
 const fruits = ['apple', 'oranges' , ' ', 'mango', ' ' , 'lemon'];
 console.log(fruits.map(fruit => fruit === ' '  ? 'empty string' : fruit));
+
+const coppiedFruits = [...fruits];
+console.log(coppiedFruits);
+
+// const toArray = (arg1, arg2, arg3) => [arg1, arg2, arg3];
+// console.log(toArray(1,2,3));
+
+const toArray = (...args) => args;
+console.log(toArray(1,2,3));
