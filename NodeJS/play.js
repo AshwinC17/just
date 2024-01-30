@@ -19,14 +19,26 @@
 
 // console.log(student.class);
 
-const fruits = ['apple', 'oranges' , ' ', 'mango', ' ' , 'lemon'];
-console.log(fruits.map(fruit => fruit === ' '  ? 'empty string' : fruit));
+// const fruits = ['apple', 'oranges' , ' ', 'mango', ' ' , 'lemon'];
+// console.log(fruits.map(fruit => fruit === ' '  ? 'empty string' : fruit));
 
-const coppiedFruits = [...fruits];
-console.log(coppiedFruits);
+// const coppiedFruits = [...fruits];
+// console.log(coppiedFruits);
 
 // const toArray = (arg1, arg2, arg3) => [arg1, arg2, arg3];
 // console.log(toArray(1,2,3));
 
-const toArray = (...args) => args;
-console.log(toArray(1,2,3));
+// const toArray = (...args) => args;
+// console.log(toArray(1,2,3));
+
+const person = {
+    name: 'Abc',
+    age: 20,
+    country: 'India'
+};
+
+const printName = ({name}) => console.log(name);
+printName(person);
+
+const {name, age} = person;
+console.log(name, age);
