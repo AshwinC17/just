@@ -43,23 +43,42 @@
 // const {name, age} = person;
 // console.log(name, age);
 
-const fetchData = () => {
-    const promise = new Promise((resolve, reject) => {
+// const fetchData = () => {
+//     const promise = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve('Done!');
+//         }, 1500);
+//     });
+//     return promise;
+// };
+
+// setTimeout(() => {
+//     console.log('2 seconds passed');
+//     fetchData()
+//         .then(text => {
+//         console.log(text);  
+//         return fetchData();
+//     });
+// }, 2000);
+
+// console.log('hi');
+// console.log('hello');
+
+function delayPrint(msg, delay) {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            resolve('Done!');
-        }, 1500);
+            console.log(msg);
+            resolve();
+        }, delay);
     });
-    return promise;
-};
+}
 
-setTimeout(() => {
-    console.log('2 seconds passed');
-    fetchData()
-        .then(text => {
-        console.log(text);  
-        return fetchData();
-    });
-}, 2000);
+async function printAll() {
+    await delayPrint('a', 0);
+    await delayPrint('b', 0);
+    await delayPrint('c', 3000);
+    await delayPrint('d', 0);
+    await delayPrint('e', 0);
+}
 
-console.log('hi');
-console.log('hello');
+printAll();
