@@ -31,14 +31,35 @@
 // const toArray = (...args) => args;
 // console.log(toArray(1,2,3));
 
-const person = {
-    name: 'Abc',
-    age: 20,
-    country: 'India'
+// const person = {
+//     name: 'Abc',
+//     age: 20,
+//     country: 'India'
+// };
+
+// const printName = ({name}) => console.log(name);
+// printName(person);
+
+// const {name, age} = person;
+// console.log(name, age);
+
+const fetchData = () => {
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Done!');
+        }, 1500);
+    });
+    return promise;
 };
 
-const printName = ({name}) => console.log(name);
-printName(person);
+setTimeout(() => {
+    console.log('2 seconds passed');
+    fetchData()
+        .then(text => {
+        console.log(text);  
+        return fetchData();
+    });
+}, 2000);
 
-const {name, age} = person;
-console.log(name, age);
+console.log('hi');
+console.log('hello');
