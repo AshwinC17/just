@@ -10,19 +10,16 @@
   <div class="container">
     <h1>Booked Appointments</h1>
     <ul id="appointmentList" class="appointment-list">
-      <!-- Appointments will be dynamically added here -->
     </ul>
   </div>
 
   <script>
-    // Function to delete an appointment
     function deleteAppointment(id) {
       fetch(`/api/appointments/${id}`, {
         method: 'DELETE'
       })
       .then(response => {
         if (response.ok) {
-          // Remove the appointment from the list if deletion is successful
           document.getElementById(`appointment${id}`).remove();
         } else {
           console.error('Failed to delete appointment');
@@ -31,7 +28,6 @@
       .catch(error => console.error('Error deleting appointment:', error));
     }
 
-    // Fetch appointments from the server and populate the list
     fetch('/api/appointments')
       .then(response => response.json())
       .then(data => {
