@@ -1,43 +1,56 @@
+/* Include Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  .container {
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f0f0f0; /* Light gray background color */
+    color: #333; /* Dark gray text color */
+}
+
+.container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-  }
-  
-  h1 {
+    background-color: #fff; /* White background color for container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for container */
+    border-radius: 5px; /* Rounded corners for container */
+}
+
+h1 {
     text-align: center;
-  }
-  
-  .appointment-list {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.appointment-list {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .appointment-item {
+}
+
+.appointment-item {
     border-bottom: 1px solid #ccc;
     padding: 10px;
-    background-color: #f9f9f9; /* Light gray background */
-  }
-  
-  .appointment-item:last-child {
+    background-color: #f9f9f9;
+}
+
+.appointment-item:last-child {
     border-bottom: none;
-  }
-  
-  .delete-btn {
+}
+
+.delete-btn {
     background-color: #ff3333;
     color: white;
     padding: 5px 10px;
     border: none;
     cursor: pointer;
-  }
-  
-  .delete-btn:hover {
+    border-radius: 3px; /* Rounded corners for button */
+}
+
+.delete-btn:hover {
     background-color: #cc0000;
-  }
-  
+}

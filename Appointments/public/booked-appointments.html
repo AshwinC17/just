@@ -9,43 +9,47 @@
 <body>
   <div class="container">
     <h1>Booked Appointments</h1>
-    <ul id="appointmentsList"></ul>
+    <ul id="appointmentList" class="appointment-list">
+      <!-- Appointments will be dynamically added here -->
+    </ul>
   </div>
+
   <script>
-    fetch('/api/appointments')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch appointments');
-        }
-        return response.json();
+    // Function to delete an appointment
+    function deleteAppointment(id) {
+      fetch(`/api/appointments/${id}`, {
+        method: 'DELETE'
       })
-      .then(data => {
-        const appointmentsList = document.getElementById('appointmentsList');
-        if (!data || !data.appointments) {
-          throw new Error('Invalid data format');
+      .then(response => {
+        if (response.ok) {
+          // Remove the appointment from the list if deletion is successful
+          document.getElementById(`appointment${id}`).remove();
+        } else {
+          console.error('Failed to delete appointment');
         }
+      })
+      .catch(error => console.error('Error deleting appointment:', error));
+    }
+
+    // Fetch appointments from the server and populate the list
+    fetch('/api/appointments')
+      .then(response => response.json())
+      .then(data => {
+        const appointmentList = document.getElementById('appointmentList');
         data.appointments.forEach(appointment => {
-          const li = document.createElement('li');
-          li.textContent = `Name: ${appointment.name}, Email: ${appointment.email}, Phone: ${appointment.phone}`;
-          
-          const deleteButton = document.createElement('button');
-          deleteButton.textContent = 'Delete';
-          deleteButton.addEventListener('click', () => {
-            fetch(`/api/appointments/${appointment.id}`, { method: 'DELETE' })
-              .then(() => {
-                appointmentsList.removeChild(li);
-              })
-              .catch(err => console.error('Failed to delete appointment:', err));
-          });
-          
-          li.appendChild(deleteButton);
-          appointmentsList.appendChild(li);
+          const listItem = document.createElement('li');
+          listItem.id = `appointment${appointment.id}`;
+          listItem.classList.add('appointment-item');
+          listItem.innerHTML = `
+            <p><strong>Name:</strong> ${appointment.name}</p>
+            <p><strong>Email:</strong> ${appointment.email}</p>
+            <p><strong>Phone:</strong> ${appointment.phone}</p>
+            <button class="delete-btn" onclick="deleteAppointment(${appointment.id})">Delete</button>
+          `;
+          appointmentList.appendChild(listItem);
         });
       })
-      .catch(err => {
-        console.error(err);
-        document.getElementById('appointmentsList').innerHTML = '<li>No appointments found</li>';
-      });
+      .catch(error => console.error('Error fetching appointments:', error));
   </script>
 </body>
 </html>
