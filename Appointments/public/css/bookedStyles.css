@@ -22,6 +22,7 @@ body {
   .appointment-item {
     border-bottom: 1px solid #ccc;
     padding: 10px;
+    background-color: #f9f9f9; /* Light gray background */
   }
   
   .appointment-item:last-child {
