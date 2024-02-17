@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booked Appointments</title>
+  <link rel="stylesheet" href="/css/bookedStyles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Booked Appointments</h1>
+    <ul id="appointmentsList"></ul>
+  </div>
+  <script>
+    fetch('/api/appointments')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch appointments');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const appointmentsList = document.getElementById('appointmentsList');
+        if (!data || !data.appointments) {
+          throw new Error('Invalid data format');
+        }
+        data.appointments.forEach(appointment => {
+          const li = document.createElement('li');
+          li.textContent = `Name: ${appointment.name}, Email: ${appointment.email}, Phone: ${appointment.phone}`;
+          
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.addEventListener('click', () => {
+            fetch(`/api/appointments/${appointment.id}`, { method: 'DELETE' })
+              .then(() => {
+                appointmentsList.removeChild(li);
+              })
+              .catch(err => console.error('Failed to delete appointment:', err));
+          });
+          
+          li.appendChild(deleteButton);
+          appointmentsList.appendChild(li);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('appointmentsList').innerHTML = '<li>No appointments found</li>';
+      });
+  </script>
+</body>
+</html>

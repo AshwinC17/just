@@ -13,13 +13,8 @@ app.use(bodyParser.json());
 // Serve static files from the public directory
 app.use(express.static('public'));
 
-// Routes
-app.use('/', routes);
-
-// Define a route for the root URL to serve the index.html file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// Use the routes defined in appointmentRoutes.js
+app.use(routes);
 
 // Sync database and start server
 sequelize.sync()

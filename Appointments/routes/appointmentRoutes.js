@@ -1,14 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const appointmentController = require('../controllers/appointmentController');
 
-// Define routes
-router.post('/api/appointments', appointmentController.createAppointment);
-router.get('/api/appointments', appointmentController.getAppointments);
-
-// Define a route for the root URL
-router.get('/', (req, res) => {
-  res.send('Welcome to the appointment booking application!');
+// Define a route for booking an appointment
+router.get('/book-appointment', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'book-appointment.html'));
 });
+
+// Define a route for submitting the form
+router.post('/book-appointment', appointmentController.createAppointment);
+
+// Define a route for the success page
+router.get('/success', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'success.html'));
+});
+
+// Define a route for viewing booked appointments
+router.get('/booked-appointments', appointmentController.getAppointments);
 
 module.exports = router;
