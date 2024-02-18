@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./util/database');
-const Expense = require('./models/expense');
+const expensesRoutes = require('./routes/expensesRoutes');
 
 const app = express();
 const port = 3000;
@@ -17,7 +17,8 @@ sequelize.sync()
     console.error('Error syncing database:', err);
   });
 
-// Start the server
+app.use('/expenses', expensesRoutes);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
