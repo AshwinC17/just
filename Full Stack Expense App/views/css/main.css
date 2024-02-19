@@ -1,19 +1,21 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family:  Georgia, 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: #ebedf3;
   }
   
   .container {
     display: flex;
-    justify-content: center;
+    border-radius: 54px;
+    text-align: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
   }
   
   .title {
-    color: #343a40; /* dark gray */
+    color: #343a40;
     margin-bottom: 20px;
   }
   
@@ -26,8 +28,8 @@ body {
     display: inline-block;
     margin: 10px;
     padding: 10px 20px;
-    background-color: #0066ff; /* blue */
-    color: #fff; /* white */
+    background-color: #3f33a765;
+    color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
@@ -35,15 +37,15 @@ body {
 
   .box {
     width: 400px;
-    border: 2px solid #007bff; /* blue border */
+    border: 2px solid black; /* blue border */
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    background-color: #f8f9fa; /* light gray */
+    background-color: lightgoldenrodyellow /* light gray */
   }
   
   
   .btn:hover {
-    background-color: #00b33c; /* darker blue on hover */
+    background-color: #7859cc;
   }
   
