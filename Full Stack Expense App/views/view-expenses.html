@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Expenses</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>View Expenses</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="expenseList">
+        <!-- Expenses will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function deleteExpense(id) {
+      fetch(`/api/expenses/${id}`, {
+        method: 'DELETE'
+      })
+      .then(response => {
+        if (response.ok) {
+          document.getElementById(`expense${id}`).remove();
+        } else {
+          console.error('Failed to delete expense');
+        }
+      })
+      .catch(error => console.error('Error deleting expense:', error));
+    }
+
+    fetch('/api/expenses')
+      .then(response => response.json())
+      .then(data => {
+        const expenseList = document.getElementById('expenseList');
+        data.expenses.forEach(expense => {
+          const row = document.createElement('tr');
+          row.id = `expense${expense.id}`;
+          row.innerHTML = `
+            <td>${expense.amount}</td>
+            <td>${expense.description}</td>
+            <td>${expense.category}</td>
+            <td>
+              <button onclick="deleteExpense(${expense.id})">Delete</button>
+              <button onclick="updateExpense(${expense.id})">Update</button>
+            </td>
+          `;
+          expenseList.appendChild(row);
+        });
+      })
+      .catch(error => console.error('Failed to fetch expenses:', error));
+  </script>
+</body>
+</html>
