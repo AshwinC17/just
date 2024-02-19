@@ -1,0 +1,35 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #f2f2fc;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #03121f1c;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(209, 124, 124, 0.1);
+    text-align: center;
+  }
+  
+  h2 {
+    color: #9502cf;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #92d690;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+  
+  .btn:hover {
+    background-color: #00b35a;
+  }
+  
