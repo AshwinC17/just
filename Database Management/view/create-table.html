@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Table</title>
+</head>
+<body>
+    <h1>Create New Table</h1>
+    <form action="/create-table" method="post">
+        <label for="tableName">Table Name:</label>
+        <input type="text" id="tableName" name="tableName" required><br><br>
+        <div id="fields">
+            <div>
+                <label for="fieldName">Field Name:</label>
+                <input type="text" name="fieldName[]" required>
+                <label for="fieldType">Field Type:</label>
+                <select name="fieldType[]" required>
+                    <option value="text">Text</option>
+                    <option value="number">Number</option>
+                    <option value="date">Date</option>
+                </select>
+                <button type="button" onclick="addField()">Add Field</button>
+            </div>
+        </div>
+        <br>
+        <button type="submit">Create Table</button>
+    </form>
+
+    <script>
+        function addField() {
+            const fieldsDiv = document.getElementById('fields');
+            const fieldDiv = document.createElement('div');
+            fieldDiv.innerHTML = `
+                <label for="fieldName">Field Name:</label>
+                <input type="text" name="fieldName[]" required>
+                <label for="fieldType">Field Type:</label>
+                <select name="fieldType[]" required>
+                    <option value="text">Text</option>
+                    <option value="number">Number</option>
+                    <option value="date">Date</option>
+                </select>
+                <button type="button" onclick="removeField(this)">Remove</button>
+            `;
+            fieldsDiv.appendChild(fieldDiv);
+        }
+
+        function removeField(button) {
+            const fieldsDiv = document.getElementById('fields');
+            fieldsDiv.removeChild(button.parentElement);
+        }
+    </script>
+</body>
+</html>
