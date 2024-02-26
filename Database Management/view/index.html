@@ -7,24 +7,11 @@
     <h1>Database Management System</h1>
     <div>
         <h2>Create New Table</h2>
-        <label for="tableName">Table Name:</label>
-        <input type="text" id="tableName"><br><br>
-        <label for="fieldName">Field Name:</label>
-        <input type="text" id="fieldName">
-        <label for="fieldType">Field Type:</label>
-        <select id="fieldType">
-            <option value="text">Text</option>
-            <option value="number">Number</option>
-            <option value="date">Date</option>
-        </select>
-        <button onclick="addField()">Add Field</button>
-        <div id="fields"></div>
-        <button onclick="createTable()">Create Table</button>
+        <button onclick="location.href='/create-table'">Create New Table</button>
     </div>
     <div>
-        <h2>View Tables</h2>
-        <ul id="tables"></ul>
+        <h2>View Created Tables</h2>
+        <button onclick="location.href='/tables'">View Created Tables</button>
     </div>
-    <script src="client.js"></script>
 </body>
 </html>

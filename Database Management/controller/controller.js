@@ -1,4 +1,4 @@
-const { createTable, getAllTables } = require('./model/model.js');
+const { createTable, getAllTables } = require('../model/model.js');
 
 const createTableController = (req, res) => {
     const { tableName, fields } = req.body;
