@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/create-table', (req, res) => {
-    res.sendFile(path.join(__dirname, '../view', 'index.html'));
+    res.sendFile(path.join(__dirname, '../view', 'create-table.html'));
 });
 
 router.post('/create-table', createTableController);
